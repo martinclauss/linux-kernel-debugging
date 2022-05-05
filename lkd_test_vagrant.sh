@@ -18,5 +18,5 @@ export VAGRANT_VAGRANTFILE=$1
 # vagrant plugin install vagrant-libvirt && \
 vagrant up --provider libvirt && \
 vagrant ssh && \
-vagrant destory -f && \
+vagrant destroy -f && \
 rm -rf .vagrant

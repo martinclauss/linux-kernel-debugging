@@ -103,7 +103,7 @@ Note: Red Hat also develops `podman` which should also be fine (`sudo dnf update
 
 ```
 # get system up-to-date
-sudo dnf update
+$ sudo dnf update
 
 # install Docker according to https://docs.docker.com/engine/install/fedora/
 $ sudo dnf install dnf-plugins-core
@@ -113,8 +113,31 @@ $ sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 # install compilers and development tools
 $ sudo dnf groupinstall "Development Tools"
 
-# install the rest of the dependencies
+# install the rest of the requirements
 $ sudo dnf install rsync git qemu-system-x86 qemu-img debootstrap bc openssl iproute
+
+# start docker service
+$ sudo systemctl start docker
+
+# you might want to add your user to the docker group
+$ sudo usermod -aG docker $USER
+```
+
+### Ubuntu
+
+```
+# get system up-to-date
+$ sudo apt-get update && sudo apt-get upgrade
+
+# install Docker according to https://docs.docker.com/engine/install/ubuntu/
+$ sudo apt-get install ca-certificates curl gnupg lsb-release
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+# install the rest of the requirements (compilers, build tools, qemu, ...)
+$ sudo apt-get install build-essential rsync git qemu-system-x86 debootstrap bc openssl libncurses-dev gawk flex bison libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf
 
 # start docker service
 $ sudo systemctl start docker
@@ -254,7 +277,7 @@ iface enp0s3 inet dhcp
 Port forwarding is already enabled from `<host>:2222` to `<qemu>:22` (see `-net` in `lkd_run_qemu.sh`)
 
 ```
-# apt-get update && apt-get install openssh-server -y
+# apt-get update && apt-get install openssh-server
 # systemctl enable ssh
 # systemctl start ssh
 ```

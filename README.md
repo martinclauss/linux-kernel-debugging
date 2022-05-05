@@ -282,6 +282,10 @@ Last login: Mon May  2 13:50:52 2022
 ...
 ```
 
+## Kernel Version / Commit
+
+The default `git clone` has a `--depth 1` parameter to reduce the amount of data that must be transferred from https://github.com/torvalds/linux. This means that you can only build the latest commit. If you want to compile and debug a specific commit you should adjust the `git clone ...` line in `lkd_init.sh`.
+
 ## Testing (mostly for myself)
 
 Test the setup with `vagrant` and `libvirt`:

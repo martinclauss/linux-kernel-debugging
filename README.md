@@ -1,5 +1,9 @@
 # Linux Kernel Debugging
 
+## Quick Start
+
+Check the [requirements](#requirements) and see the [example](#example) session!
+
 ## Design Decisions
 
 ### Terminology

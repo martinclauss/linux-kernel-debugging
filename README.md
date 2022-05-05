@@ -110,7 +110,7 @@ $ sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 $ sudo dnf groupinstall "Development Tools"
 
 # install the rest of the dependencies
-$ sudo dnf install rsync git qemu-system-x86 qemu-img debootstrap bc openssl
+$ sudo dnf install rsync git qemu-system-x86 qemu-img debootstrap bc openssl iproute
 
 # start docker service
 $ sudo systemctl start docker

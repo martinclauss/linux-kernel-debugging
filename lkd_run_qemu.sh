@@ -7,6 +7,11 @@ else
     DEBUG=""
 fi
 
+if [[ -n "$(ss -ln | grep '^tcp.*:2222')" ]]
+then
+	echo "port 2222 is already in use! change the port or stop the corresponding process"
+	exit 1
+fi
 
 # w/ KVM support
 # does not quite work: https://lkml.iu.edu/hypermail/linux/kernel/2103.2/00282.html

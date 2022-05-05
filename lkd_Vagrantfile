@@ -10,7 +10,6 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
-    echo "lkd-arch-vagrant" > /etc/hostname
     hostnamectl hostname $(cat /etc/hostname)
 
     pacman -Syu --noconfirm

@@ -13,8 +13,8 @@ fi
 docker run -it \
     --rm --cap-add=SYS_PTRACE \
     --security-opt seccomp=unconfined \
-    -v $(pwd):/io \
-    -v $(pwd)/lkd_gdbinit:/home/dbg/.gdbinit \
+    -v $(pwd):/io:Z \
+    -v $(pwd)/lkd_gdbinit:/home/dbg/.gdbinit:Z \
     --net host \
     --hostname "lkd-arch-container" \
     --name arch_kernel_debugging \

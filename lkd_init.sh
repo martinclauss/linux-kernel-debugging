@@ -4,7 +4,7 @@ docker build -f lkd_Dockerfile -t lkd . || exit 1
 
 # we want an in-tree build but git clone won't let us clone into a non-empty directory
 # thus the rsync
-git clone -depth 1 https://github.com/torvalds/linux linux_tmp && \
+git clone --depth 1 https://github.com/torvalds/linux linux_tmp && \
 rsync -a linux_tmp/ $(pwd)/  && \
 rm -rf linux_tmp || exit 1
 

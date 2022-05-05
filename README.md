@@ -77,7 +77,47 @@ Overview of the interesting files. In parenthesis you see where it is used in th
 
 ## Requirements
 
-If you use Arch Linux as your host, just look at the `ldk_Vagrantfile` to see which packages are needed (`pacman -S --noconfirm ...`).
+### Arch Linux
+
+```
+# get system up-to-date
+$ sudo pacman -Syu
+
+# install all requirements
+$ sudo pacman -S rsync git qemu debootstrap base-devel docker bc
+
+# start docker service
+$ sudo systemctl start docker
+
+# you might want to add your user to the docker group
+$ sudo usermod -aG docker $USER
+```
+
+### Fedora
+
+Note: Red Hat also develops `podman` which should also be fine (`sudo dnf update && sudo dnf install podman podman-docker`).
+
+```
+# get system up-to-date
+sudo dnf update
+
+# install Docker according to https://docs.docker.com/engine/install/fedora/
+$ sudo dnf install dnf-plugins-core
+$ sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+$ sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+# install compilers and development tools
+$ sudo dnf groupinstall "Development Tools"
+
+# install the rest of the dependencies
+$ sudo dnf install rsync git qemu-system-x86 qemu-img debootstrap bc openssl
+
+# start docker service
+$ sudo systemctl start docker
+
+# you might want to add your user to the docker group
+$ sudo usermod -aG docker $USER
+```
 
 If you are using any other distribution you need to install the equivalent packages. Open a Pull Request if you want to contribute installation instructions for other distributions ;)
 
@@ -243,7 +283,9 @@ Last login: Mon May  2 13:50:52 2022
 Test the setup with `vagrant` and `libvirt`:
 
 ```
-$ ./lkd_test_vagrant.sh
+$ ./lkd_test_vagrant.sh $(realpath lkd_Vagrantfile)
+# or
+$ ./lkd_test_vagrant.sh $(realpath lkd_Vagrantfile_fedora)
 ```
 
 ## Contributions

@@ -1,0 +1,13 @@
+# standard GDB settings
+set disassembly-flavor intel
+set pagination off
+set print pretty on
+set follow-fork-mode child
+set history save on
+set confirm off
+
+# Arch Linux specific location for pwndbg
+source /usr/share/pwndbg/gdbinit.py
+
+# use if you have light terminal colors (e.g. solarized light) 
+set syntax-highlight-style friendly

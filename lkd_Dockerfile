@@ -1,0 +1,12 @@
+# Dockerfile for the debugging container
+FROM docker.io/archlinux
+
+RUN pacman -Syu --noconfirm && pacman -S sudo pwndbg python-pwntools base-devel vim --noconfirm
+
+WORKDIR /tmp
+COPY lkd_docker_create_user.sh .
+RUN chmod +x lkd_docker_create_user.sh && ./lkd_docker_create_user.sh && rm ./lkd_docker_create_user.sh
+
+WORKDIR /io
+
+CMD ["/io/lkd_gdb.sh"]

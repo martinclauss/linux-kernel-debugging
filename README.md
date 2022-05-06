@@ -162,7 +162,7 @@ $ ./lkd_run_qemu.sh debug
 in *another* terminal window:
 
 ```
-./lkd_debug.sh
+$ ./lkd_debug.sh
 ```
 
 You should now see a `pwndbg` session like this where the execution halts at `start_kernel`:
@@ -314,10 +314,10 @@ The default `git clone` has a `--depth 1` parameter to reduce the amount of data
 Test the setup with `vagrant` and `libvirt`:
 
 ```
-$ ./lkd_test_vagrant.sh $(realpath lkd_Vagrantfile)
-# or
-$ ./lkd_test_vagrant.sh $(realpath lkd_Vagrantfile_fedora)
+$ ./lkd_test_vagrant.sh $(realpath <lkd_Vagrantfile_xyz>)
 ```
+
+with `<lkd_Vagrantfile_xyz>` in `lkd_Vagrantfile_{arch,fedora,ubuntu}`.
 
 ## Contributions
 

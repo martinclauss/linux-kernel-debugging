@@ -278,6 +278,7 @@ Port forwarding is already enabled from `<host>:2222` to `<qemu>:22` (see `-net`
 
 ```
 # apt-get update && apt-get install openssh-server
+# sed -i -e 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 # systemctl enable ssh
 # systemctl start ssh
 ```
